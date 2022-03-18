@@ -1,4 +1,9 @@
 
+given an array of nums and the given target 
+we have to tell weather that given target sum is present in the given array or not 
+
+
+
 class Solution{   
 public:
     bool isSubsetSum(int N, int arr[], int sum){
