@@ -2,7 +2,17 @@
 given an array of nums and the given target 
 we have to tell weather that given target sum is present in the given array or not 
 
+Input:
+N = 6
+arr[] = {3, 34, 4, 12, 5, 2}
+sum = 9
+Output: 1 
+Explanation: Here there exists a subset with
+sum = 9, 4+3+2 = 9.
 
+
+
+Tabulation method
 
 class Solution{   
 public:
