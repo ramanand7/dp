@@ -1,0 +1,38 @@
+memoization
+  
+    int solve(int idx,int c,int wt[],int val[],int n,vector<vector<int>> &dp){
+        if(idx==0){
+            if(c>=wt[idx]) return val[0];
+            else return 0;
+        }
+        if(dp[idx][c]!=-1) return  dp[idx][c];
+        int np = 0+solve(idx-1,c,wt,val,n,dp);
+        int p = INT_MIN;
+        if(wt[idx]<=c) p = val[idx]+solve(idx-1,c-wt[idx],wt,val,n,dp);
+        return dp[idx][c]=max(p,np);
+    }
+    
+    int knapSack(int W, int wt[], int val[], int n) 
+    { 
+        vector<vector<int>> dp(n,vector<int>(W+1,-1));
+        return solve(n-1,W,wt,val,n,dp);
+    }
+    
+    
+    tabulation 
+     int knapSack(int W, int wt[], int val[], int n) 
+    { 
+        vector<vector<int>> dp(n,vector<int>(W+1,0));
+        for(int i = wt[0];i<=W;i++){
+            dp[0][i] = val[0];
+        }
+        for(int i = 1;i<n;i++){
+            for(int j = 0;j<=W;j++){
+                int np = dp[i-1][j];
+                int p = INT_MIN;
+                if(j>=wt[i]) p = val[i]+dp[i-1][j-wt[i]];
+                dp[i][j] = max(p,np);
+            }
+        }
+        return dp[n-1][W];
+    }
